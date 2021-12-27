@@ -1,0 +1,88 @@
+[http]
+disable = false
+listen = "0.0.0.0:8082"
+mode = "release"
+allTimeoutSec = 20
+readTimeoutSec = 5
+writeTimeoutSec = 5
+exitTimeoutSec = 1
+
+[proc]
+namespace = "test"
+
+## 以下为通用部分，无需修改
+[runtime]
+maxProcs = 1
+
+[worker]
+num = 1
+
+[dlog]
+Type = "file"
+Level = "DEBUG"
+FileName = "./log" #日志文件目录
+FileRotateCount = 3
+FileRotateSize = 104857600
+
+[oauth]
+domain = ""
+systemName = ""
+source = ""
+signature = ""
+selfDomain = ""
+
+[oauth.apis.checkperm]
+domain = ""
+uri = ""
+timeoutSec = 10
+
+[oauth.apis.getuserperm]
+domain = ""
+uri = "/%s/users/%s/roles"
+timeoutSec = 10
+
+[oauth.apis.userlogin]
+domain = ""
+uri = ""
+timeoutSec = 10
+
+[oauth.apis.systemlogin]
+domain = ""
+uri = ""
+timeoutSec = 10
+
+[ipm]
+domain = "http://127.0.0.1:8081"
+
+[ipm.apis.getIp]
+uri = ""
+timeoutSec = 10
+
+[selfCloud]
+domain = ""
+source = ""
+secret = ""
+
+[selfCloud.apis.getProductLine]
+uri = ""
+timeoutSec = 10
+
+[selfCloud.apis.getAppId]
+uri = ""
+timeoutSec = 10
+
+[selfCloud.apis.getDomain]
+uri = ""
+timeoutSec = 10
+
+
+[database.db]
+debug = false
+maxIdle = 5
+maxOpen = 10
+addr = ["root:dddddd@tcp(127.0.0.1:3306)/test?charset=utf8&loc=Asia%2FShanghai&readTimeout=10s&writeTimeout=10s&timeout=10s&interpolateParams=true"]
+
+[cron]
+server = "127.0.0.1"
+cache = true
+cacheSecond = "@every 1m"
